@@ -50,23 +50,23 @@ class Comment(models.Model):
     username = models.ForeignKey(User,on_delete=models.CASCADE)
     post = models.ForeignKey(BlogPost,on_delete=models.CASCADE)
 
-# class Business(models.Model):
-#     logo = models.ImageField(upload_to='logos/')
-#     description = HTMLField()
-#     neighbourhood = models.ForeignKey(neighbourhood,on_delete=models.CASCADE)
-#     owner = models.ForeignKey(User,on_delete=models.CASCADE)
-#     name =models.CharField(max_length=100)
-#     email = models.EmailField()
-#     address =models.CharField(max_length=100)
-#     contact = models.IntegerField()
+class Business(models.Model):
+    logo = models.ImageField(upload_to='logos/')
+    description = HTMLField()
+    neighbourhood = models.ForeignKey(neighbourhood,on_delete=models.CASCADE)
+    owner = models.ForeignKey(User,on_delete=models.CASCADE)
+    name =models.CharField(max_length=100)
+    email = models.EmailField()
+    address =models.CharField(max_length=100)
+    contact = models.IntegerField()
 
-#     def __str__(self):
-#         return self.name
+    def __str__(self):
+        return self.name
     
-#     @classmethod
-#     def search_business(cls,search_term):
-#         businesses = cls.objects.filter(description__icontains=search_term)
-#         return businesses
+    @classmethod
+    def search_business(cls,search_term):
+        businesses = cls.objects.filter(description__icontains=search_term)
+        return businesses
     
 
 class healthservices(models.Model):
