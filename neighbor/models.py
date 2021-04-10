@@ -33,17 +33,17 @@ class Profile(models.Model):
     def __str__(self):
         return self.name
 
-# class BlogPost(models.Model):
-#     title = models.CharField(max_length=150)
-#     image = models.ImageField(upload_to='post/')
-#     post = HTMLField()
-#     username = models.ForeignKey(User,on_delete=models.CASCADE)
-#     neighbourhood= models.ForeignKey(neighbourhood,on_delete=models.CASCADE)
-#     post_date = models.DateTimeField(auto_now_add=True)
-#     profpic = models.ImageField(upload_to='profpics/')
+class BlogPost(models.Model):
+    title = models.CharField(max_length=150)
+    image = models.ImageField(upload_to='post/')
+    post = HTMLField()
+    username = models.ForeignKey(User,on_delete=models.CASCADE)
+    neighbourhood= models.ForeignKey(neighbourhood,on_delete=models.CASCADE)
+    post_date = models.DateTimeField(auto_now_add=True)
+    profpic = models.ImageField(upload_to='profpics/')
 
-#     def __str__(self):
-#         return self.title
+    def __str__(self):
+        return self.title
 
 # class Comment(models.Model):
 #     comment = models.CharField(max_length=300)
