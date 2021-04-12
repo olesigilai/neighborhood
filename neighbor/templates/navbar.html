@@ -25,43 +25,43 @@
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Dropdown
               </a>
-               <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="text-decoration: none;">
+               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <ul>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'blog'%}" >Blog</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'business'%}">Businesses</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'health'%}">Health Facilities</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'authorities'%}">Security Authorities</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'notifications'%}">Notifications</a>
-            </li>
+            <p class="nav-item">
+                <a class="nav-link" href="{% url 'blog'%}" style="color: black;">Blog</a>
+            </p>
+            <p class="nav-item">
+                <a class="nav-link" href="{% url 'business'%}" style="color: black;">Businesses</a>
+            </p>
+            <p class="nav-item">
+                <a class="nav-link" href="{% url 'health'%}" style="color: black;">Health Facilities</a>
+            </p>
+            <p class="nav-item">
+                <a class="nav-link" href="{% url 'authorities'%}" style="color: black;">Security Authorities</a>
+            </p>
+            <p class="nav-item">
+                <a class="nav-link" href="{% url 'notifications'%}" style="color: black;">Notifications</a>
+            
             
             {% if user.is_superuser %}
-            <li class="nav-item">
-                <a class="nav-link" href="/admin">Admin</a>
-            </li>
+            <p class="nav-item">
+                <a class="nav-link" href="/admin"style="color: black;">Admin</a>
+            
             {% endif %}
             {% if user.is_authenticated %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'my-profile'%}">Profile</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'update-profile' %}">Edit Profile</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout'%}">Logout</a>
-            </li>
+            <p class="nav-item">
+                <a class="nav-link" href="{% url 'my-profile'%}" style="color: black;">Profile</a>
+            
+            <p class="nav-item">
+                <a class="nav-link" href="{% url 'update-profile' %}" style="color: black;">Edit Profile</a>
+            
+            <p class="nav-item" style="text-decoration: none;">
+                <a class="nav-link" href="{% url 'logout'%}" style="color: black;">Logout</a>
+            
 
             {% else %}
-            <li class="nav-item">
-                <a class="nav-link" href="/accounts/login">Login</a>
+            <li class="nav-item" style="text-decoration: none;">
+                <a class="nav-link" href="/accounts/login" style="color: black;">Login</a>
             </li>
             {% endif %}
         </ul>
@@ -70,7 +70,7 @@
             
           </ul>
           <form class="form-inline my-2 my-lg-0" role="search" action="{% url 'search_results'%}">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="business">
+            <input class="form-control mr-sm-2" type="search" placeholder="business search" aria-label="Search" name="business">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
         </div>
