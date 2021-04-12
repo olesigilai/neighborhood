@@ -1,1 +1,1 @@
-web: gunicorn nneigbourhood.wsgi
+web: gunicorn neigbourhood.wsgi
