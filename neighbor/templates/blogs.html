@@ -12,7 +12,7 @@
 
     <div class="text-center">
         <a href="{% url 'new-blogpost' %}">
-            <button class="btn btn-primary" style="height:50px;  margin-top: -6px;">Create BlogPost</button>
+            <button class="btn btn-primary" style="height:50px;  margin-top: -6px;">Create a Blog</button>
         </a>
     </div>
 
@@ -28,7 +28,7 @@
                         <h6 class="card-subtitle mb-2 text-muted">{{blog.username}}</h6>
                     </a>
                     <p class="card-text">{{blog.post|truncatechars:150 | safe}}</p>
-                    <a href="/view/blog/{{blog.id}}" class="card-link">Continue reading</a>
+                    <a href="{% url 'view_blog' blog.id%}" class="card-link">iew more</a>
                 </div>
             </div>
         </div>

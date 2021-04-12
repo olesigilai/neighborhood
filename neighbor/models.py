@@ -23,7 +23,7 @@ class neighbourhood(models.Model):
         cls.objects.filter(neighbourhood=neighbourhood).delete()
 
 class Profile(models.Model):
-    profpic = models.ImageField(upload_to='profpics/')
+    profpic = models.ImageField(upload_to='profilep/')
     description = HTMLField()
     neighbourhood = models.ForeignKey(neighbourhood,on_delete=models.CASCADE)
     username = models.ForeignKey(User,on_delete=models.CASCADE)
@@ -35,12 +35,12 @@ class Profile(models.Model):
 
 class BlogPost(models.Model):
     title = models.CharField(max_length=150)
-    image = models.ImageField(upload_to='post/')
+    image = models.ImageField(upload_to='images/')
     post = HTMLField()
     username = models.ForeignKey(User,on_delete=models.CASCADE)
     neighbourhood= models.ForeignKey(neighbourhood,on_delete=models.CASCADE)
     post_date = models.DateTimeField(auto_now_add=True)
-    profpic = models.ImageField(upload_to='profpics/')
+    profpic = models.ImageField(upload_to='profilep/')
 
     def __str__(self):
         return self.title
@@ -51,7 +51,7 @@ class Comment(models.Model):
     post = models.ForeignKey(BlogPost,on_delete=models.CASCADE)
 
 class Business(models.Model):
-    logo = models.ImageField(upload_to='logos/')
+    logo = models.ImageField(upload_to='ilogo/')
     description = HTMLField()
     neighbourhood = models.ForeignKey(neighbourhood,on_delete=models.CASCADE)
     owner = models.ForeignKey(User,on_delete=models.CASCADE)

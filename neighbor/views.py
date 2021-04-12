@@ -3,7 +3,7 @@ from django.http import HttpResponse,Http404,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from .forms import *
-# from .emails import *
+
 
 
 def index(request):
@@ -17,19 +17,19 @@ def index(request):
     return render(request,'index.html')
 
 
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def my_profile(request):
     current_user=request.user
     profile =Profile.objects.get(username=current_user)
     return render(request,'profile/user_profile.html',{"profile":profile})
 
 
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def user_profile(request,username):
     user = User.objects.get(username=username)
     profile =Profile.objects.get(username=user)
 
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def create_profile(request):
     current_user=request.user
     if request.method=="POST":
@@ -65,7 +65,7 @@ def update_profile(request):
     return render(request,'profile/update_profile.html',{"form":form})
 
 
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def blog(request):
     current_user=request.user
     profile=Profile.objects.get(username=current_user)
@@ -73,7 +73,7 @@ def blog(request):
 
     return render(request,'blogs.html',{"blogposts":blogposts})
 
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def view_blog(request,id):
     current_user = request.user
 
@@ -96,7 +96,7 @@ def view_blog(request,id):
     return render(request,'read.html',{"blog":blog,"form":form,"comments":comments})
 
 
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def new_blogpost(request):
     current_user=request.user
     profile =Profile.objects.get(username=current_user)
@@ -118,7 +118,7 @@ def new_blogpost(request):
     return render(request,'blog_form.html',{"form":form})
 
 
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def businesses(request):
     current_user=request.user
     profile=Profile.objects.get(username=current_user)
@@ -126,7 +126,7 @@ def businesses(request):
 
     return render(request,'businesses.html',{"businesses":businesses})
 
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def new_business(request):
     current_user=request.user
     profile =Profile.objects.get(username=current_user)
@@ -146,7 +146,7 @@ def new_business(request):
 
     return render(request,'business_form.html',{"form":form})
 
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def health(request):
     current_user=request.user
     profile=Profile.objects.get(username=current_user)
@@ -154,7 +154,7 @@ def health(request):
 
     return render(request,'health.html',{"healthservices":healthservices})
 
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def authorities(request):
     current_user=request.user
     profile=Profile.objects.get(username=current_user)
@@ -163,15 +163,15 @@ def authorities(request):
     return render(request,'autho.html',{"authorities":authorities})
 
 
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def notification(request):
     current_user=request.user
     profile=Profile.objects.get(username=current_user)
     all_notifications = notifications.objects.filter(neighbourhood=profile.neighbourhood)
 
-    return render(request,'notifications/notifications.html',{"notifications":all_notifications})
+    return render(request,'notification.html',{"notifications":all_notifications})
 
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def new_notification(request):
     current_user=request.user
     profile =Profile.objects.get(username=current_user)
@@ -182,20 +182,17 @@ def new_notification(request):
             notification = form.save(commit = False)
             notification.author = current_user
             notification.neighbourhood = profile.neighbourhood
-            notification.save()
+            notification.save()           
 
-            if notification.priority == 'High Priority':
-                send_email(profile.name,profile.email,notification.title,notification.notification,notification.author,notification.neighbourhood)
-
-        return HttpResponseRedirect('/notifications')
+        return redirect('/notifications')
 
 
     else:
         form = notificationsForm()
 
-    return render(request,'notifications/notifications_form.html',{"form":form})
+    return render(request,'notification_forms.html',{"form":form})
 
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def search_results(request):
     current_user = request.user
     profile =Profile.objects.get(username=current_user)
